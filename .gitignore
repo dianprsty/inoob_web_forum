@@ -163,3 +163,5 @@ cython_debug/
 
 .nix-shell
 dump.rdb
+node_modules/
+**/*output.css
