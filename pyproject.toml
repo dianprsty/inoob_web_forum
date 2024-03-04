@@ -1,0 +1,15 @@
+[project]
+name = "inoob_web_forum"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "dianprsty", email = "dprasmail@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
