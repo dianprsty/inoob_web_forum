@@ -24,6 +24,11 @@ Inoob (index out of bound)
 - Category
 - Save Question
 
+### Module Application
+- Base
+- Landing
+- Question (Include question, answer, reply, upvote, downvote)
+
 ## How to run this app
 
 ### Prerequisite
