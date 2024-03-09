@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 );
             """), 
             (""" 
-                ALTER TABLE "saved" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
+                ALTER TABLE "saved" ADD FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id");
             """),
             (""" 
                 ALTER TABLE "saved" ADD FOREIGN KEY ("question_id") REFERENCES "questions" ("id");        
