@@ -10,4 +10,28 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunSQL(
+            sql=[("""
+                CREATE TABLE IF NOT EXISTS "tags" (
+                    "category_id" integer NOT NULL,
+                    "question_id" integer NOT NULL,
+                    "created_at" timestamp,
+                    "updated_at" timestamp,
+                    PRIMARY KEY ("category_id", "question_id")
+                );
+            """), 
+            (""" 
+                ALTER TABLE "tags" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
+            """),
+            (""" 
+                ALTER TABLE "tags" ADD FOREIGN KEY ("question_id") REFERENCES "questions" ("id");        
+            """)],
+            reverse_sql=[("""
+                ALTER TABLE tags DROP CONSTRAINT tags_category_id_fkey
+            """), ("""
+                ALTER TABLE tags DROP CONSTRAINT tags_question_id_fkey
+            """), ("""
+                DROP TABLE IF EXISTS tags;
+            """)]
+        )
     ]

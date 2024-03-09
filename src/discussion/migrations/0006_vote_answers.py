@@ -10,4 +10,24 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunSQL(
+            sql=[("""
+                CREATE TABLE IF NOT EXISTS "vote_answers" (
+                    "user_id" integer NOT NULL,
+                    "answer_id" integer NOT NULL,
+                    "vote" integer NOT NULL,
+                    "created_at" timestamp,
+                    "updated_at" timestamp,
+                    PRIMARY KEY ("user_id", "answer_id")
+                );
+            """), 
+            (""" 
+                ALTER TABLE "vote_answers" ADD FOREIGN KEY ("answer_id") REFERENCES "answers" ("id");          
+            """)],
+            reverse_sql=[("""
+                ALTER TABLE vote_answers DROP CONSTRAINT vote_answers_answer_id_fkey
+            """), ("""
+                DROP TABLE IF EXISTS vote_answers;
+            """)]
+        )
     ]
