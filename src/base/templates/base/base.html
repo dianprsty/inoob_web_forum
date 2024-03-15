@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/output.css' %}"
+    />
+  </head>
+  <body class="">
+    {% block navbar %}{% endblock navbar %}
+    <main
+      class="min-h-screen min-w-screen flex flex-col justify-center items-center bg-stone-50"
+    >
+      {% block content %} {% endblock content %}
+    </main>
+  </body>
+</html>
