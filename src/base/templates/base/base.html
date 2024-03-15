@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -16,9 +17,7 @@
   </head>
   <body class="">
     {% block navbar %}{% endblock navbar %}
-    <main
-      class="min-h-screen min-w-screen flex flex-col justify-center items-center bg-stone-50"
-    >
+    <main>
       {% block content %} {% endblock content %}
     </main>
   </body>

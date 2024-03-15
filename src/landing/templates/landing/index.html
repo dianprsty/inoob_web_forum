@@ -1,0 +1,28 @@
+{% extends "base/base.html" %} 
+
+{% load static %} 
+
+
+{% block navbar %}
+    {% include "base/navbar.html" %}
+{% endblock navbar %}
+
+{% block title %} Home | INoob {% endblock title%} {% block content %}
+
+<section class="w-screen">
+  <div
+    class="w-10/12 h-screen m-auto flex flex-col lg:flex-row justify-between items-center"
+  >
+    <div class="w-full lg:w-6/12 flex flex-col gap-4">
+      <h1 class="text-5xl font-bold">Welcome to INoob</h1>
+      <p class="text-xl text-slate-700">
+        A tech forum where tech enthusiasts and beginners converge to explore, learn, and grow together in an inclusive and supportive community. Let's embark on a journey of discovery and collaboration in the exciting realm of technology.
+      </p>
+      <a class="btn btn-primary max-w-fit" href="{% url 'login' %}">Explore</a>
+    </div>
+    <div class="w-full lg:w-5/12 object-contain order-1 lg:order-2">
+      <img src="{% static 'images/hero_image.gif' %}" alt="hero image" />
+    </div>
+  </div>
+</section>
+{% endblock content %}
