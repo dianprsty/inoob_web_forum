@@ -1,23 +1,21 @@
-{% extends "base/base.html" %} 
+{% extends "base/base.html" %}
 
-{% block title %} Login | INoob {% endblock title%} {% block content %}
+{% block title %} Login | INoob {% endblock title%} 
 
-<div class="min-h-screen min-w-screen flex flex-col justify-center items-center bg-stone-50">
+
+{% block content %}
+
+<div
+  class="min-h-screen min-w-screen flex flex-col justify-center items-center bg-stone-50"
+>
   <section>
-    {% if form.errors %}
-    <p class="p-6 shadow-lg card w-96 mb-12 text-rose-500 bg-white">
-      Your username and password didn't match. Please try again. 
-    </p>
-    {% endif %} {% if next %} {% if user.is_authenticated %}
-    <p class="p-6 shadow-lg card w-96 mb-12 text-rose-500 bg-white">
-      Your account doesn't have access to this page. To proceed, please login with
-      an account that has access.
-    </p>
-    {% else %}
-    <p class="p-6 shadow-lg card w-96 mb-12 text-rose-500 bg-white">
-      Please login to see this page.
-    </p>
-    {% endif %} {% endif %}
+    {% if form.errors %} 
+      <ul class="p-6 shadow-lg card w-96 mb-12 text-rose-500 bg-white">
+        {% for error in form.non_field_errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
   </section>
   <section class="p-6 shadow-lg card w-96 bg-white">
     <form method="post" action="{% url 'login' %}" class="flex flex-col gap-6">
@@ -41,8 +39,19 @@
             clip-rule="evenodd"
           />
         </svg>
-
-        {{ form.username }}
+        <input
+          type="text"
+          name="username"
+          autofocus=""
+          autocapitalize="none"
+          autocomplete="username"
+          maxlength="150"
+          required="false"
+          id="id_username"
+          class="grow"
+          value="{{ form.username.value|default_if_none:'' }}"
+          placeholder="Username"
+        />
       </label>
       <label
         class="input input-bordered input-primary border-slate-400 flex items-center gap-2"
@@ -61,7 +70,16 @@
             clip-rule="evenodd"
           />
         </svg>
-        {{ form.password }}
+        <input
+          type="password"
+          name="password"
+          autocomplete="current-password"
+          required
+          id="id_password"
+          class="grow"
+          value="{{ form.password.value|default_if_none:'' }}"
+          placeholder="Password"
+        />
       </label>
 
       <button value="submit" class="btn btn-primary">Login</button>

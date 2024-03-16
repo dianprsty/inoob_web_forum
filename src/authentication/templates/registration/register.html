@@ -1,0 +1,207 @@
+{% extends "base/base.html" %} {% block title %}Register | INoob{% endblock %}
+{% block content %}
+
+<div
+  class="min-h-screen min-w-screen flex flex-col justify-center items-center bg-stone-50"
+>
+  <section>
+    {% if form.errors %}
+    <ul class="p-6 shadow-lg card w-96 mb-12 text-rose-500 bg-white">
+    {% for field in form %}
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </section>
+  <section class="p-6 shadow-lg card w-96 bg-white">
+    <form method="post"  class="flex flex-col gap-6">
+      <h1 class="font-bold text-2xl text-center">Register</h1>
+      {% csrf_token %}
+
+      <label
+        class="input input-bordered input-primary border-slate-400 flex items-center gap-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-4 h-4 opacity-70"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 
+            8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 
+            22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <input
+          type="text"
+          name="username"
+          maxlength="150"
+          autocapitalize="none"
+          autocomplete="username"
+          autofocus="True"
+          required
+          aria-describedby="id_username_helptext"
+          id="id_username"
+          class="grow"
+          value="{{ form.username.value|default_if_none:'' }}"
+          placeholder="Username"
+        />
+      </label>
+      <label
+        class="input input-bordered input-primary border-slate-400 flex items-center gap-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-4 h-4 opacity-70"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 
+            8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 
+            22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <input type="email" name="email" value="dian@mail.co" maxlength="320" required id="id_email">
+      </label>
+      <label
+        class="input input-bordered input-primary border-slate-400 flex items-center gap-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          class="w-4 h-4 opacity-70"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 
+            1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 
+            4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <input
+          type="password"
+          name="password1"
+          autocomplete="new-password"
+          required
+          aria-describedby="id_password1_helptext"
+          id="id_password1"
+          class="grow"
+          value="{{ form.password.value|default_if_none:'' }}"
+          placeholder="Password"
+        />
+      </label>
+      <label
+      class="input input-bordered input-primary border-slate-400 flex items-center gap-2"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        class="w-4 h-4 opacity-70"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 
+          1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 
+          4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      <input
+        type="password"
+        name="password2"
+        autocomplete="new-password"
+        required
+        aria-describedby="id_password2_helptext"
+        id="id_password2"
+        class="grow"
+        value="{{ form.password.value|default_if_none:'' }}"
+        placeholder="Password Confirmation"
+      />
+    </label>
+
+      <button value="submit" class="btn btn-primary">Register</button>
+      <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+  </section>
+</div>
+{% endblock %}
+
+<!-- 
+
+<form method="post">
+  {% csrf_token %}
+  <div>
+    <label for="id_username">Username:</label>
+
+    <div class="helptext" id="id_username_helptext">
+      Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+    </div>
+
+    <input
+      type="text"
+      name="username"
+      maxlength="150"
+      autocapitalize="none"
+      autocomplete="username"
+      autofocus=""
+      required=""
+      aria-describedby="id_username_helptext"
+      id="id_username"
+    />
+  </div>
+
+  <div>
+    <label for="id_password1">Password:</label>
+
+    <div class="helptext" id="id_password1_helptext">
+      <ul>
+        <li>
+          Your password can’t be too similar to your other personal information.
+        </li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+        <li>Your password can’t be entirely numeric.</li>
+      </ul>
+    </div>
+
+    <input
+      type="password"
+      name="password1"
+      autocomplete="new-password"
+      required=""
+      aria-describedby="id_password1_helptext"
+      id="id_password1"
+    />
+  </div>
+
+  <div>
+    <label for="id_password2">Password confirmation:</label>
+
+    <div class="helptext" id="id_password2_helptext">
+      Enter the same password as before, for verification.
+    </div>
+
+    <input
+      type="password"
+      name="password2"
+      autocomplete="new-password"
+      required=""
+      aria-describedby="id_password2_helptext"
+      id="id_password2"
+    />
+  </div>
+  <button type="submit">Register</button>
+</form>
+
+ -->
