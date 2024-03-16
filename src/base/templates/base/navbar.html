@@ -4,7 +4,7 @@
 >
   <div class="w-10/12 mx-auto">
     <div class="flex flex-1 items-center">
-      <a>
+      <a href="{% url 'landing' %}" class="cursor-pointer">
         <img
           src="{% static 'favicon_white.png' %}"
           alt="inoob icon"
@@ -14,7 +14,9 @@
     </div>
     <ul class="flex flex-row gap-4 lg:mr-8">
       <li>
-        <a class="btn btn-ghost text-base" href="{% url 'landing' %}">Dashboard</a>
+        <a class="btn btn-ghost text-base" href="{% url 'landing' %}"
+          >Dashboard</a
+        >
       </li>
       <li>
         <a class="btn btn-ghost text-base" href="{% url 'landing' %}"
@@ -32,16 +34,22 @@
           <div class="w-10 rounded-full">
             <img
               alt="Tailwind CSS Navbar component"
-              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              src="{% static 'user_placeholder.avif' %}"
             />
           </div>
         </div>
-        <ul
-          tabindex="0"
-          class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-primary text-primary-content rounded-box w-52"
-        >
-          <li><a>Logout</a></li>
-        </ul>
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <ul
+            tabindex="0"
+            class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-primary text-primary-content rounded-box w-52"
+          >
+            <li>
+              <button type="submit" class="w-full text-left ">Logout</button>
+            </li>
+            <li><a href="{% url 'landing' %}">Profile</a></li>
+          </ul>
+        </form>
       </div>
       {% else %}
       <ul class="flex flex-row gap-2">
