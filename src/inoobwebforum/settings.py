@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'discussion.apps.DiscussionConfig',
     'landing.apps.LandingConfig',
+    'authentication.apps.AuthenticationConfig',
 ]
 
 MIDDLEWARE = [
