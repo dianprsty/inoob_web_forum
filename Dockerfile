@@ -25,11 +25,11 @@ RUN chown -R nonroot /app/*.whl
 USER nonroot
 RUN pip install *.whl --no-cache-dir --prefer-binary
 
-WORKDIR /home/nonroot/.local/lib/python3.11/site-packages/
+WORKDIR /home/nonroot/.local/lib/python3.12/site-packages/
 COPY src/manage.py .
-COPY .env .env
 
 RUN python manage.py collectstatic
+RUN chmod +rwx -R static
 RUN pip install granian
 
 EXPOSE 8000
