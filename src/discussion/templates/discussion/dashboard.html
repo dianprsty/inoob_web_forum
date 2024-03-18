@@ -1,8 +1,40 @@
-{% extends 'base/base_discussion.html' %}
+{% extends 'base/base_discussion.html' %} 
 
-{% block title %} Dashboard {% endblock %}
-{% block page %} Dashboard {% endblock %}
+{% block title %} Dashboard {% endblock %} 
+{% block page %} Dashboard {% endblock %} 
 
 {% block content %}
-<p>Content</p>
+<div class="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0 bg-blue-50 w-full">
+  <div class="flex flex-col w-full p-8 gap-8 ">
+    {% for question in questions %}
+    <article class="card bg-base-100 shadow">
+      <div class="card-body flex flex-col ">
+        <h2 class="card-title text-2xl">{{ question.title }}</h2>
+        <p class="line-clamp-1 text-ellipsis">{{ question.content }}</p>
+        <div class="flex gap-2 justify-items-start w-full">
+          <p class="border border-green-500 text-green-500 flex-grow-0 rounded p-1 text-xs"> Python</p>
+          <p class="border border-green-500 text-green-500 flex-grow-0 rounded p-1 text-xs"> Django</p>
+          <p class="border border-green-500 text-green-500 flex-grow-0 rounded p-1 text-xs"> Website</p>
+        </div>
+        <div class="card-actions justify-end">
+          <a href="" class="btn btn-warning btn-sm rounded-full">Open</a>
+          <a href="" class="btn btn-primary btn-sm rounded-full">Save</a>
+          <a href="{% url 'detail' question.id %}" class="btn btn-info btn-sm rounded-full">  Details</a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <aside class="w-full  lg:w-4/12 py-8 pr-8">
+    <div class="bg-base-100 h-full min-h-[700px] rounded-lg p-4 shadow">
+      <h2 class="text-lg mb-4 font-bold text-center">Explore by Tags</h2>
+      <div class="flex flex-col gap-2 justify-items-start w-full">
+        <p class="py-1 px-4 text-blue-400 border border-blue-400 rounded"> Python</p>
+        <p class="py-1 px-4 text-blue-400 border border-blue-400 rounded"> Django</p>
+        <p class="py-1 px-4 text-blue-400 border border-blue-400 rounded"> Website</p>
+      </div>
+
+    </div>
+  </aside>
+</div>
 {% endblock content %}

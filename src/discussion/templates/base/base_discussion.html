@@ -24,7 +24,7 @@
       <div class="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
         <div
-          class="drawer-content flex flex-col items-center justify-center min-h-screen relative"
+          class="drawer-content flex flex-col items-center justify-start min-h-screen bg-blue-50 relative"
         >
           <!-- Page content here -->
           <label
@@ -48,7 +48,7 @@
               />
             </svg>
           </label>
-          <div class="navbar bg-slate-50 absolute top-0 border-b-2 px-8">
+          <div class="navbar bg-white  sticky top-0 border-b-2 px-8">
             <div class="flex-1">
               <a class="btn btn-ghost text-xl">{% block page %}{% endblock %}</a>
             </div>
@@ -91,7 +91,7 @@
             class="drawer-overlay"
           ></label>
           <ul
-            class="menu p-4 w-80 min-h-full bg-slate-50 border-r-2 text-base-content flex gap-4"
+            class="menu p-4 w-80 min-h-full  border-r-2 text-base-content flex gap-4"
           >
             <div>
               <a

@@ -11,5 +11,4 @@ def register(response):
             return redirect("landing")
     else:
 	    form = RegisterForm()
-
     return render(response, "registration/register.html", {"form":form})
