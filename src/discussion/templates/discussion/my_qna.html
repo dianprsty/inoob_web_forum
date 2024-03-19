@@ -1,8 +1,8 @@
 {% extends 'base/base_discussion.html' %} 
 {% load static %}
 
-{% block title %} Dashboard {% endblock %} 
-{% block page %} Dashboard {% endblock %} 
+{% block title %} My QnA {% endblock %} 
+{% block page %} My QnA {% endblock %} 
 
 {% block content %}
 <div class="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0 bg-blue-50 w-full">
@@ -15,16 +15,7 @@
             {{ question.title }}
             </a>
         </h2>
-        <div class="flex items-center justify-start gap-2">
-          <div class="rounded-full overflow-hidden">
-            <img
-            alt="Profile Picture"
-            src="{% static 'user_placeholder.avif' %}"
-            class="w-6"
-            /> 
-          </div>
-          <p class="flex-grow-0 text-slate-800 text-sm">by {{ question.username }} </p>
-          <p class="flex-grow-0 border border-slate-300 h-full "></p>
+        <div class="flex items-stretch justify-start gap-2">
           <p class="flex-grow-0 text-slate-800 text-sm">{{ question.time_ago }}</p>
           <p class="flex-grow-0 border border-slate-300 h-full "></p>
           <p class="flex-grow-0 text-slate-800 text-sm">
@@ -52,18 +43,8 @@
           </div>
         </div>
       </div>
-    </article>
+
     {% endfor %}
   </div>
-  <aside class="w-full  lg:w-4/12 py-8 pr-8">
-    <div class="bg-base-100 h-full min-h-[700px] rounded-lg p-4 shadow">
-      <h2 class="text-lg mb-4 font-bold text-center">Explore by Tags</h2>
-      <div class="flex flex-col gap-2 justify-items-start w-full">
-        {% for tag in tags %} 
-          <p class="py-1 px-4 text-blue-400 border border-blue-400 rounded">{{ tag.name }}</p>
-        {% endfor %}
-      </div>
-    </div>
-  </aside>
 </div>
 {% endblock content %}
