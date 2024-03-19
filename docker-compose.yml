@@ -10,7 +10,7 @@ services:
     volumes:
       - shared-volume:/home/nonroot/.local/lib/python3.12/site-packages/static
     environment:
-      DEBUG: $DEBUG
+      DEBUG: False
       PORT: 8000
       SECRET_KEY: secret
       ALLOWED_HOSTS: 127.0.0.1,localhost
