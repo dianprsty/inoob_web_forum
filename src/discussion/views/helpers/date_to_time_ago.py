@@ -8,10 +8,11 @@ def to_time_ago(date):
     seconds =   time_difference.seconds
     minutes = seconds // 60
     hours = minutes // 60
-    days = hours // 24
+    days = time_difference.days
     weeks =  days // 7
     months = days // 30
     years =  days // 365
+    print(seconds)
 
     time_value = 0
     time_unit = ""
