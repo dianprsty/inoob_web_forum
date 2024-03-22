@@ -1,4 +1,7 @@
-{% extends "base/base.html" %} {% block title %}Register | INoob{% endblock %}
+{% extends "base/base.html" %} 
+{% load static %}
+
+{% block title %}Register | INoob{% endblock %}
 {% block content %}
 
 <div
@@ -15,7 +18,14 @@
   </section>
   <section class="p-6 shadow-lg card w-96 bg-white">
     <form method="post" class="flex flex-col gap-6">
-      <h1 class="font-bold text-2xl text-center">Register</h1>
+      <div class="flex items-center gap-4 justify-start relative">
+        <img src="{% static 'favicon.png' %}" alt="logo" class="h-14 w-16" />
+        <h1
+          class="text-[#5271ff] font-bold text-4xl text-center w-full absolute"
+        >
+          Register
+        </h1>
+      </div>
       {% csrf_token %}
 
       <label
@@ -138,76 +148,31 @@
 
       <button value="submit" class="btn btn-primary">Register</button>
       <input type="hidden" name="next" value="{{ next }}" />
+      <div class="flex gap-2 items-center justify-center text-sm">
+        <p>Already have an account?</p>
+        <a href="{% url 'login' %}" class="text-blue-700">Login</a>
+      </div>
+      <a
+        href="{% url 'landing' %}"
+        class="flex items-center justify-center gap-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+          />
+        </svg>
+        Back
+      </a>
     </form>
   </section>
 </div>
 {% endblock %}
-
-<!-- 
-
-<form method="post">
-  {% csrf_token %}
-  <div>
-    <label for="id_username">Username:</label>
-
-    <div class="helptext" id="id_username_helptext">
-      Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-    </div>
-
-    <input
-      type="text"
-      name="username"
-      maxlength="150"
-      autocapitalize="none"
-      autocomplete="username"
-      autofocus=""
-      required=""
-      aria-describedby="id_username_helptext"
-      id="id_username"
-    />
-  </div>
-
-  <div>
-    <label for="id_password1">Password:</label>
-
-    <div class="helptext" id="id_password1_helptext">
-      <ul>
-        <li>
-          Your password can’t be too similar to your other personal information.
-        </li>
-        <li>Your password must contain at least 8 characters.</li>
-        <li>Your password can’t be a commonly used password.</li>
-        <li>Your password can’t be entirely numeric.</li>
-      </ul>
-    </div>
-
-    <input
-      type="password"
-      name="password1"
-      autocomplete="new-password"
-      required=""
-      aria-describedby="id_password1_helptext"
-      id="id_password1"
-    />
-  </div>
-
-  <div>
-    <label for="id_password2">Password confirmation:</label>
-
-    <div class="helptext" id="id_password2_helptext">
-      Enter the same password as before, for verification.
-    </div>
-
-    <input
-      type="password"
-      name="password2"
-      autocomplete="new-password"
-      required=""
-      aria-describedby="id_password2_helptext"
-      id="id_password2"
-    />
-  </div>
-  <button type="submit">Register</button>
-</form>
-
- -->
