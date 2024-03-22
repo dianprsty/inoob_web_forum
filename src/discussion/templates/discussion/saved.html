@@ -1,0 +1,50 @@
+{% extends 'base/base_discussion.html' %} 
+{% load static %}
+
+{% block title %} Saved {% endblock %} 
+{% block page %} Saved {% endblock %} 
+
+{% block content %}
+<div class="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0 bg-blue-50 w-full">
+  <div class="flex flex-col w-full p-8 gap-4 ">
+    {% for question in questions %}
+    <article class="card bg-base-100 shadow">
+      <div class="card-body flex flex-col ">
+        <h2 class="card-title text-2xl">
+          <a href="{% url 'detail' question.id %}" class="">
+            {{ question.title }}
+            </a>
+        </h2>
+        <div class="flex items-stretch justify-start gap-2">
+          <p class="flex-grow-0 text-slate-800 text-sm">{{ question.time_ago }}</p>
+          <p class="flex-grow-0 border border-slate-300 h-full "></p>
+          <p class="flex-grow-0 text-slate-800 text-sm">
+            {{ question.total_answers|default_if_none:0 }} 
+            answer{% if question.total_answers > 1  %}s{% endif %}
+          </p>
+          <p class="flex-grow-0 border border-slate-300 h-full "></p>
+          <p class="flex-grow-0 text-slate-800 text-sm">
+            {{ question.total_votes|default_if_none:0 }} 
+            vote{% if question.total_votes > 1  %}s{% endif %}
+          </p>
+        </div>
+        <div class="flex flex-1 justify-between items-center">
+          <div class="flex gap-2 justify-items-start flex-wrap w-full">
+            {% for tag in question.tags %}
+            <p class="border border-green-500 text-green-500 flex-grow-0 rounded p-1 text-xs">{{ tag.name }}</p>
+            {% endfor %}
+          </div>
+          <div class="card-actions flex-nowrap justify-end">
+            <a href="">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
