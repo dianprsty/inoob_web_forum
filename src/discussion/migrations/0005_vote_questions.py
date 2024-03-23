@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunSQL(
-            sql=[("""
+            sql=[("""pdm run src/manage.py runserver
                 CREATE TABLE "vote_questions" (
                 "user_id" integer NOT NULL,
                 "question_id" integer NOT NULL,

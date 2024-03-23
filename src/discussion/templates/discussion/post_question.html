@@ -1,0 +1,25 @@
+{% extends 'base/base_discussion.html' %} 
+{% load static %} 
+
+{% block title %} post_question {% endblock %} 
+{% block page %} post_question {% endblock %} 
+
+{% block content %}
+
+<div
+  class="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0 bg-blue-50 w-full p-8"
+>
+  <article class="card bg-base-100 shadow w-full">
+    <div class="card-body flex flex-col">
+      <form method="post" class="flex flex-col gap-6">
+        {% csrf_token %}
+        <label for="title">title</label>
+        <input type="text" name='title' id='title'> 
+        <label for="content">content</label>
+        <textarea name='content' id='content'>  </textarea>
+        <button value="submit" class="btn btn-primary">submit</button>
+      </form>
+    </div>
+  </article>
+</div>
+{% endblock content %}
