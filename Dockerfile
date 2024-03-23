@@ -10,7 +10,6 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-RUN npm install
 RUN python -m pip install pdm --no-cache-dir
 
 FROM base
@@ -21,6 +20,7 @@ FROM base AS build
 WORKDIR /app
 COPY . /app
 
+RUN npm install
 RUN npm run tw-build
 RUN pdm build
 
