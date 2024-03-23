@@ -1,5 +1,14 @@
+# Node
+FROM node:20-alpine AS node
+
 # Base
 FROM python:3.12-alpine as base
+
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/share /usr/local/share
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
 
 RUN python -m pip install pdm --no-cache-dir
 
@@ -11,6 +20,7 @@ FROM base AS build
 WORKDIR /app
 COPY . /app
 
+RUN npm run tw-build
 RUN pdm build
 
 # Deployment
