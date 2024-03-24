@@ -12,8 +12,6 @@ def to_time_ago(date):
     weeks =  days // 7
     months = days // 30
     years =  days // 365
-    print(seconds)
-
     time_value = 0
     time_unit = ""
     if years > 0 :

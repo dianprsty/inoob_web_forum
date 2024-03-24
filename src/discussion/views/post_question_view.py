@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db import connection
 from django.utils import timezone
+from datetime import datetime
 
 def insert_question(user_id,title,content,created_at,updated_at):
     with connection.cursor() as cursor:
@@ -15,7 +16,7 @@ def post_question(request):
          title = request.POST['title']
          content = request.POST['content']
          print (user_id,title,content)
-         insert_question (user_id,title,content,timezone.make_aware(timezone.now()),timezone.make_aware(timezone.now()))
+         insert_question (user_id,title,content,datetime.now(),datetime.now())
     
         
          return redirect('dashboard')  # Redirect to success page after posting question
