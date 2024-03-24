@@ -166,3 +166,4 @@ cython_debug/
 dump.rdb
 node_modules/
 **/*output.css
+tests/locustfile.py

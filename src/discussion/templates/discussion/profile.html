@@ -14,11 +14,11 @@
       <h2 class="card-title text-2xl">
         Profile
       </h2>
-      <p>Name : {{ profile.name }} </p>
+      <p>Name : {{ profile.name|default_if_none:'' }} </p>
       <p>Username : {{ profile.username }}</p>
       <p>Email : {{ profile.email }}</p>
       <p>About Me : </p>
-      <p>{{ profile.about }} </p>
+      <p>{{ profile.about|default_if_none:'' }} </p>
 
     </div>
   </article>
