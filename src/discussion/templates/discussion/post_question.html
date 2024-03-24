@@ -14,9 +14,9 @@
       <form method="post" class="flex flex-col gap-6">
         {% csrf_token %}
         <label for="title">title</label>
-        <input type="text" name='title' id='title'> 
+        <input type="text" name='title' id='title' class="input input-bordered input-primary border-slate-400 flex items-center gap-2"> 
         <label for="content">content</label>
-        <textarea name='content' id='content'>  </textarea>
+        <textarea name='content' id='content' class="input input-bordered input-primary border-slate-400 flex items-center gap-2">  </textarea>
         <button value="submit" class="btn btn-primary">submit</button>
       </form>
     </div>
